@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0e47415d-734a-42fe-8507-923bbb20f5e4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/main/java/fr/univavignon/pokedex/api/PokemonTrainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/fr/univavignon/pokedex/api/PokemonTrainer.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2LrQYsPkRu9blJkHR0TOsLAo6Jl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "/home/eyraud/Documents/M1 Linux/S2/Techniques de test/ceri-m1-techniques-de-test/src"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0e47415d-734a-42fe-8507-923bbb20f5e4" name="Changes" comment="" />
+      <created>1676626772382</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676626772382</updated>
+    </task>
+    <servers />
+  </component>
+</project>

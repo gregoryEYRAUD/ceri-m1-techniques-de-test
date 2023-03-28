@@ -17,6 +17,17 @@ public class IPokedexTest {
     List<Pokemon> getPokemons();
     List<Pokemon> getPokemons(Comparator<Pokemon> order);
      */
+    @Test
+    public void testSize(){
+        IPokedex pokedex = Mockito.mock(IPokedex.class);
+
+        Mockito.when(pokedex.size()).thenReturn(0);
+
+        int taille = pokedex.size();
+
+        assertEquals(taille, 0);
+    }
+
 
     @Test
     public void testAddPokemon(){

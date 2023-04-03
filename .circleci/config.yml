@@ -14,23 +14,6 @@ jobs:
         - image: cimg/base:stable
       steps:
         - codecov/upload
-
-    big-job:
-        docker:
-        # replace with your preferred image
-          - image: cimg/base:stable
-        steps:
-          - checkout
-          - run: 
-              name: big-big-job
-              command: curl -Os https://uploader.codecov.io/latest/linux/codecov
-          - run: 
-              name: big-big-big-job
-              command: chmod +x codecov
-          - run: 
-              name: big-big-big-big-job
-              command: ./codecov
-          - codecov/upload
   
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
     build-and-test:
@@ -53,6 +36,7 @@ jobs:
           - run:
               name: Test
               command: mvn test
+          - codecov/upload
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -60,4 +44,3 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
-      - big-job

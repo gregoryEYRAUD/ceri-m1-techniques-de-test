@@ -23,7 +23,7 @@ jobs:
           - codecov/upload
           - run: 
               name: big-big-job
-              command: curl -Os https://uploader.codecov.io/latest/linux/codecov chmod +x codecov ./codecov
+              command: curl -Os https://uploader.codecov.io/latest/linux/codecov
           - run: 
               name: big-big-big-job
               command: chmod +x codecov

@@ -60,4 +60,4 @@ workflows:
     jobs:
       - big-job
       - build-and-test
-      - example-job
+      - example-job 

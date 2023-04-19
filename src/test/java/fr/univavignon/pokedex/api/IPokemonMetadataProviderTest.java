@@ -47,7 +47,7 @@ IV 	56% 	100%
         assertEquals(64, bulbizarre.getHp());
         assertEquals(4000, bulbizarre.getDust());
         assertEquals(4, bulbizarre.getCandy());
-        assertEquals(56, bulbizarre.getIv());
+        assertEquals(56, bulbizarre.getIv(), 0.1);
 
         assertEquals(metadataTest, metadata);
     }

@@ -33,7 +33,7 @@ public class IPokemonTrainerFactoryTest {
         //assertEquals(Team.INSTINCT, trainer.getTeam());
 
 
-        //assertEquals(trainer, mockedTrainer);
+        assertEquals(trainer, mockedTrainer);
 
     }
 }

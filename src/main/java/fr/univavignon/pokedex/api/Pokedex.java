@@ -14,7 +14,7 @@ public class Pokedex implements IPokedex {
     private ArrayList<Pokemon> pokemons;
 
     public Pokedex() {
-        pokemons = new ArrayList<>();
+        pokemons = new ArrayList<>(150);
     }
 
     @Override
@@ -24,7 +24,8 @@ public class Pokedex implements IPokedex {
 
     @Override
     public int addPokemon(Pokemon pokemon) {
-        pokemons.set(pokemon.getIndex(), pokemon);
+        //pokemons.set(pokemon.getIndex(), pokemon);
+        pokemons.add(pokemon);
         return pokemon.getIndex();
     }
 

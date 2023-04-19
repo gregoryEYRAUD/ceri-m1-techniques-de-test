@@ -92,10 +92,12 @@ public class IPokedexTest {
         Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
 
         Pokedex pokedex = new Pokedex();
+        pokedex.addPokemon(bulbizarre);
+        pokedex.addPokemon(aquali);
 
         try {
             Pokemon poke1 = pokedex.getPokemon(0);
-            Pokemon poke2 = pokedex.getPokemon(133);
+            Pokemon poke2 = pokedex.getPokemon(1);
 
             assertEquals(poke1, bulbizarre);
             assertEquals(poke2, aquali);
@@ -136,10 +138,11 @@ public class IPokedexTest {
         pokedex.addPokemon(aquali);
 
         List<Pokemon> list = new ArrayList<>();
-        list.add(aquali);
         list.add(bulbizarre);
+        list.add(aquali);
 
-        Mockito.when(pokedex.getPokemons()).thenReturn(list);
+
+        //Mockito.when(pokedex.getPokemons()).thenReturn(list);
 
         List<Pokemon> pokedexList = pokedex.getPokemons();
 
@@ -189,6 +192,8 @@ public class IPokedexTest {
 
         list.sort(order);
 
-        assertEquals(pokedex, list);
+        List<Pokemon> pokemonList = pokedex.getPokemons(PokemonComparators.NAME);
+
+        assertEquals(list, pokemonList);
     }
 }

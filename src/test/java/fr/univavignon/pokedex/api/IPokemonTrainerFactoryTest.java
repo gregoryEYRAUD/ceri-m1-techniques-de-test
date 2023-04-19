@@ -26,8 +26,7 @@ public class IPokemonTrainerFactoryTest {
 
         PokemonTrainer mockedTrainer = Mockito.mock(PokemonTrainer.class);
 
-
-        Mockito.when(mockedTrainerFactory.createTrainer(name, team, mockedFactory)).thenReturn(mockedTrainer);
+        Mockito.when(mockedTrainerFactory.createTrainer(name, team, mockedFactory)).thenReturn(new PokemonTrainer(name, team, (IPokedex) mockedFactory));
         PokemonTrainer trainer = mockedTrainerFactory.createTrainer(name, team, mockedFactory);
 
         assertEquals("Red", trainer.getName());

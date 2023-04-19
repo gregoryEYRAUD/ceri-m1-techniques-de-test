@@ -56,7 +56,7 @@ jobs:
           - run:
               name: Generate Checkstyle badge
               command: |
-                wget -O checkstyle.xml https://circleci.com/api/v1.1/project/github/yourusername/yourproject/latest/artifacts/0/$CIRCLE_ARTIFACTS/checkstyle-result.xml
+                wget -O checkstyle.xml https://circleci.com/api/v1.1/project/github/gregoryEYRAUD/ceri-m1-techniques-de-test/latest/artifacts/0/$CIRCLE_ARTIFACTS/checkstyle-result.xml
                 curl -s https://img.shields.io/badge/checkstyle-$(grep -E '<error|<warning' checkstyle.xml | wc -l)-yellow.svg > badge.svg
                 rm checkstyle.xml
               no_output_timeout: 20s

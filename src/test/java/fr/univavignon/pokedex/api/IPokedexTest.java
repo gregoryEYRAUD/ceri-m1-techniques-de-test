@@ -10,51 +10,15 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class IPokedexTest {
-    /*
-    int addPokemon(Pokemon pokemon);
-    Pokemon getPokemon(int id) throws PokedexException;
-    List<Pokemon> getPokemons();
-    List<Pokemon> getPokemons(Comparator<Pokemon> order);
-     */
     @Test
     public void testSize(){
-        /*IPokedex pokedex = Mockito.mock(IPokedex.class);
-
-        Mockito.when(pokedex.size()).thenReturn(0);
-
-        int taille = pokedex.size();
-
-        assertEquals(taille, 0);
-
-        try {
-            Mockito.when(pokedex.getPokemon(-1)).thenThrow(new PokedexException("ID incorrect"));
-        } catch (PokedexException e) {
-            assertEquals(e.getMessage(), "ID incorrect");
-            throw new RuntimeException(e);
-        }*/
-
         Pokedex pokedex = new Pokedex(new PokemonMetadataProvider(), new PokemonFactory());
         int taille = pokedex.size();
         assertEquals(0, taille);
     }
 
-
     @Test
     public void testAddPokemon(){
-        /*Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
-        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
-
-        IPokedex mockedPokedex = Mockito.mock(IPokedex.class);
-
-        Mockito.when(mockedPokedex.addPokemon(bulbizarre)).thenReturn(0);
-        Mockito.when(mockedPokedex.addPokemon(aquali)).thenReturn(133);
-
-        int id1 = mockedPokedex.addPokemon(bulbizarre);
-        int id2 = mockedPokedex.addPokemon(aquali);
-
-        assertEquals(id1 , 0);
-        assertEquals(id2 , 133);*/
-
         Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
 
@@ -67,6 +31,7 @@ public class IPokedexTest {
         assertEquals(id2 , 133);
 
     }
+
     @Test
     public void testGetPokemon(){
         Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);

@@ -5,6 +5,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 public class IPokemonTrainerFactoryTest {
     /*
     /**
@@ -19,27 +21,13 @@ public class IPokemonTrainerFactoryTest {
 
     @Test
     public void testCreateTrainer(){
-        //Team mockedTeam = Mockito.mock(Team.class);
-        Team team = Team.INSTINCT;
-        IPokedexFactory mockedFactory = Mockito.mock(IPokedexFactory.class);
-        String name = "Red";
-        IPokemonTrainerFactory mockedTrainerFactory = Mockito.mock(IPokemonTrainerFactory.class);
 
-        PokemonTrainer mockedTrainer = Mockito.mock(PokemonTrainer.class);
+        PokemonTrainerFactory pokemonTrainerFactory = new PokemonTrainerFactory();
+        PokemonTrainer pokemonTrainer = pokemonTrainerFactory.createTrainer("Red", Team.INSTINCT, new PokedexFactory());
 
-        Mockito.when(mockedTrainerFactory.createTrainer(name, team, mockedFactory)).thenReturn(mockedTrainer);
-        PokemonTrainer trainer = mockedTrainerFactory.createTrainer(name, team, mockedFactory);
-
-        Mockito.when(mockedTrainer.getName()).thenReturn(name);
-        Mockito.when(mockedTrainer.getTeam()).thenReturn(Team.INSTINCT);
-
-        name = trainer.getName();
-        team = mockedTrainer.getTeam();
-
-        assertEquals("Red", name);
-        assertEquals(Team.INSTINCT, team);
-
-        //assertEquals(trainer, mockedTrainer);
-
+        assertNotNull(pokemonTrainer);
+        assertEquals("Red", pokemonTrainer.getName());
+        assertEquals(Team.INSTINCT, pokemonTrainer.getTeam());
+        assertNotNull(pokemonTrainer.getPokedex());
     }
 }

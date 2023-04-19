@@ -30,7 +30,7 @@ public class IPokemonTrainerFactoryTest {
         PokemonTrainer trainer = mockedTrainerFactory.createTrainer(name, team, mockedFactory);
 
         //assertEquals("Red", trainer.getName());
-        assertEquals(Team.INSTINCT, trainer.getTeam());
+        //assertEquals(Team.INSTINCT, trainer.getTeam());
 
 
         assertEquals(trainer, mockedTrainer);

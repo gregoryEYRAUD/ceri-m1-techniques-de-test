@@ -35,17 +35,14 @@ public class IPokedexTest {
         }*/
 
         Pokedex pokedex = new Pokedex();
-
         int taille = pokedex.size();
-
         assertEquals(0, taille);
-
     }
 
 
     @Test
     public void testAddPokemon(){
-        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        /*Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
 
         IPokedex mockedPokedex = Mockito.mock(IPokedex.class);
@@ -57,11 +54,23 @@ public class IPokedexTest {
         int id2 = mockedPokedex.addPokemon(aquali);
 
         assertEquals(id1 , 0);
+        assertEquals(id2 , 133);*/
+
+        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
+
+        Pokedex pokedex = new Pokedex();
+
+        int id1 = pokedex.addPokemon(bulbizarre);
+        int id2 = pokedex.addPokemon(aquali);
+
+        assertEquals(id1 , 0);
         assertEquals(id2 , 133);
+
     }
     @Test
     public void testGetPokemon(){
-        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        /*Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
 
         IPokedex mockedPokedex = Mockito.mock(IPokedex.class);
@@ -78,12 +87,26 @@ public class IPokedexTest {
 
         } catch (PokedexException e) {
             throw new RuntimeException(e);
+        }*/
+        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
+
+        Pokedex pokedex = new Pokedex();
+
+        try {
+            Pokemon poke1 = pokedex.getPokemon(0);
+            Pokemon poke2 = pokedex.getPokemon(133);
+
+            assertEquals(poke1, bulbizarre);
+            assertEquals(poke2, aquali);
+        } catch (PokedexException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Test
     public void testGetPokemons(){
-        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        /*Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
 
         IPokedex mockedPokedex = Mockito.mock(IPokedex.class);
@@ -102,12 +125,30 @@ public class IPokedexTest {
 
         List<Pokemon> pokedex = mockedPokedex.getPokemons();
 
-        assertEquals(pokedex, list);
+        assertEquals(pokedex, list);*/
+
+        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
+
+        Pokedex pokedex = new Pokedex();
+
+        pokedex.addPokemon(bulbizarre);
+        pokedex.addPokemon(aquali);
+
+        List<Pokemon> list = new ArrayList<>();
+        list.add(aquali);
+        list.add(bulbizarre);
+
+        Mockito.when(pokedex.getPokemons()).thenReturn(list);
+
+        List<Pokemon> pokedexList = pokedex.getPokemons();
+
+        assertEquals(pokedexList, list);
     }
 
     @Test
     public void testGetPokemonsSorted(){
-        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        /*Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
 
         IPokedex mockedPokedex = Mockito.mock(IPokedex.class);
@@ -129,6 +170,24 @@ public class IPokedexTest {
         Mockito.when(mockedPokedex.getPokemons(PokemonComparators.NAME)).thenReturn(list);
 
         List<Pokemon> pokedex = mockedPokedex.getPokemons(PokemonComparators.NAME);
+
+        assertEquals(pokedex, list);*/
+
+        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
+
+        Pokedex pokedex = new Pokedex();
+
+        pokedex.addPokemon(bulbizarre);
+        pokedex.addPokemon(aquali);
+
+        List<Pokemon> list = new ArrayList<>();
+        list.add(aquali);
+        list.add(bulbizarre);
+
+        PokemonComparators order = PokemonComparators.NAME;
+
+        list.sort(order);
 
         assertEquals(pokedex, list);
     }

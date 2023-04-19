@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class IPokedexFactoryTest {
 
@@ -22,7 +23,7 @@ public class IPokedexFactoryTest {
 
     @Test
     public void testCreatePokedex(){
-        IPokedex mockedPokedex = Mockito.mock(IPokedex.class);
+        /*IPokedex mockedPokedex = Mockito.mock(IPokedex.class);
 
         IPokemonMetadataProvider mockedProvider = Mockito.mock(IPokemonMetadataProvider.class);
         IPokemonFactory mockedFactory = Mockito.mock(IPokemonFactory.class);
@@ -32,7 +33,16 @@ public class IPokedexFactoryTest {
 
         IPokedex test = mockedPokedexFactory.createPokedex(mockedProvider, mockedFactory);
 
-        assertEquals(test, mockedPokedex);
+        assertEquals(test, mockedPokedex);*/
+
+        PokedexFactory pokedexFactory = new PokedexFactory();
+        PokemonMetadataProvider pokemonMetadataProvider = new PokemonMetadataProvider();
+        PokemonFactory pokemonFactory = new PokemonFactory();
+
+        Pokedex pokedex = (Pokedex) pokedexFactory.createPokedex(pokemonMetadataProvider, pokemonFactory);
+
+        assertNotNull(pokedex);
+
     }
 
 }

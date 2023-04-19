@@ -1,25 +1,26 @@
 package fr.univavignon.pokedex.api;
 
 /**
- * PokedexFactory class implementing IPokedexFactory interface
+ * PokedexFactory class implementing IPokedexFactory interface.
  *
  * @author EYRAUD Grégory
  */
-public class PokedexFactory implements IPokedexFactory{
+public class PokedexFactory implements IPokedexFactory {
     /**
-     * PokedexFactory's default constructor
+     * PokedexFactory's default constructor.
      */
     public PokedexFactory() {
     }
     /**
-     * PokedexFactory's default constructor
-     * @param metadataProvider Metadata provider the created pokedex will use.
-     * @param pokemonFactory Pokemon factory the created pokedex will use.
+     * PokedexFactory's default constructor.
+     * @param m Metadata provider the created pokedex will use.
+     * @param p Pokemon factory the created pokedex will use.
      * @return a new Pokedex
      */
     @Override
-    public IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
-        return new Pokedex(metadataProvider, pokemonFactory);
+    public IPokedex createPokedex(final IPokemonMetadataProvider m,
+                                  final IPokemonFactory p) {
+        return new Pokedex(m, p);
     }
 
 }

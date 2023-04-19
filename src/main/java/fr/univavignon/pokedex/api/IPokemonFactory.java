@@ -2,22 +2,24 @@ package fr.univavignon.pokedex.api;
 
 /**
  * Factory interface for class that aims to create Pokemon instance.
- * 
  * @author fv
  */
 public interface IPokemonFactory {
 
-	/**
+    /**
 	 * Creates a pokemon instance computing it IVs.
-	 * 
 	 * @param index Pokemon index.
 	 * @param cp Pokemon CP.
 	 * @param hp Pokemon HP.
-	 * @param dust Required dust for upgrading pokemon.
-	 * @param candy Required candy for upgrading pokemon.
-	 * @throws PokedexException If the given <strong>index</strong> is not valid.
+	 * @param dust Required dust.
+	 * @param candy Required candy.
+	 * @throws PokedexException If index is not valid.
 	 * @return Created pokemon instance.
 	 */
-	Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException;
-	
+	Pokemon createPokemon(int index,
+						  int cp,
+						  int hp,
+						  int dust,
+						  int candy)
+			throws PokedexException;
 }

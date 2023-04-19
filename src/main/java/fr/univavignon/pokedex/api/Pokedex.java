@@ -1,10 +1,4 @@
 package fr.univavignon.pokedex.api;
-
-import fr.univavignon.pokedex.api.IPokedex;
-import fr.univavignon.pokedex.api.PokedexException;
-import fr.univavignon.pokedex.api.Pokemon;
-import fr.univavignon.pokedex.api.PokemonMetadata;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -18,19 +12,29 @@ import java.util.List;
  */
 public class Pokedex implements IPokedex {
 
+    /**
+     * List of Pokemon.
+     */
     private ArrayList<Pokemon> pokemons;
+    /**
+     * The PokemonMetadataProvider.
+     */
     private PokemonMetadataProvider metadataProvider;
+    /**
+     * The PokemonFactory.
+     */
     private PokemonFactory pokemonFactory;
 
     /**
-     * Pokedex constructor
-     * @param metadataProvider A PokemonMetadataProvider to use in getPokemonMetadata
-     * @param pokemonFactory A PokemonFactory to use in createPokemon()
+     * Pokedex constructor.
+     * @param m A PokemonMetadataProvider to use in getPokemonMetadata
+     * @param p A PokemonFactory to use in createPokemon()
      */
-    public Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
+    public Pokedex(final IPokemonMetadataProvider m,
+                   final IPokemonFactory p) {
         pokemons = new ArrayList<>();
-        this.metadataProvider = (PokemonMetadataProvider) metadataProvider;
-        this.pokemonFactory = (PokemonFactory) pokemonFactory;
+        this.metadataProvider = (PokemonMetadataProvider) m;
+        this.pokemonFactory = (PokemonFactory) p;
 
         this.pokemonFactory.setPokedex(this);
         this.metadataProvider.setPokedex(this);
@@ -54,7 +58,7 @@ public class Pokedex implements IPokedex {
      * @return Index of this pokemon relative to this pokedex.
      */
     @Override
-    public int addPokemon(Pokemon pokemon) {
+    public int addPokemon(final Pokemon pokemon) {
         pokemons.add(pokemon);
         metadataProvider.setPokedex(this);
         pokemonFactory.setPokedex(this);
@@ -69,10 +73,11 @@ public class Pokedex implements IPokedex {
      * @throws PokedexException If the given <strong>index</strong> is not valid.
      */
     @Override
-    public Pokemon getPokemon(int id) throws PokedexException {
-        for (Pokemon pokemon : pokemons){
-            if(pokemon.getIndex() == id)
+    public Pokemon getPokemon(final int id) throws PokedexException {
+        for (Pokemon pokemon : pokemons) {
+            if(pokemon.getIndex() == id) {
                 return pokemon;
+            }
         }
         throw new PokedexException("Id invalide");
         //return null;
@@ -96,36 +101,46 @@ public class Pokedex implements IPokedex {
      * @return Sorted unmodifiable list of all pokemons.
      */
     @Override
-    public List<Pokemon> getPokemons(Comparator<Pokemon> order) {
+    public List<Pokemon> getPokemons(final Comparator<Pokemon> order) {
         ArrayList<Pokemon> list = pokemons;
         list.sort(order);
         return list;
     }
 
     /**
-     * Return a new Pokemon by using createPokemon() with pokemonFactory
+     * Return a new Pokemon by using createPokemon() with pokemonFactory.
      *
      * @param index Pokemon index.
      * @param cp Pokemon CP.
      * @param hp Pokemon HP.
-     * @param dust Required dust for upgrading pokemon.
-     * @param candy Required candy for upgrading pokemon.
+     * @param dust Required dust.
+     * @param candy Required candy.
      * @return a new Pokemon
-     * @throws PokedexException If the given <strong>index</strong> is not valid.
+     * @throws PokedexException If index is not valid.
      */
     @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
-        return pokemonFactory.createPokemon(index, cp, hp, dust, candy);
+    public Pokemon createPokemon(final int index,
+                                 final int cp,
+                                 final int hp,
+                                 final int dust,
+                                 final int candy) throws PokedexException {
+        return pokemonFactory.createPokemon(
+                index,
+                cp,
+                hp,
+                dust,
+                candy);
     }
 
     /**
-     *
-     * @param index Index of the pokemon to retrieve metadata for.
+     * Return the pokemon's metadata
+     * @param index Index of the pokemon.
      * @return the PokemonMetadata for a Pokemon for the given <strong>id</strong>
      * @throws PokedexException If the given <strong>index</strong> is not valid.
      */
     @Override
-    public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
+    public PokemonMetadata getPokemonMetadata(
+            final int index) throws PokedexException {
         return metadataProvider.getPokemonMetadata(index);
     }
 }

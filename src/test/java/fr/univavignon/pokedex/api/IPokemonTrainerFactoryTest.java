@@ -37,8 +37,7 @@ public class IPokemonTrainerFactoryTest {
         team = mockedTrainer.getTeam();
 
         assertEquals("Red", name);
-        assertEquals(Team.INSTINCT, trainer.getTeam());
-
+        assertEquals(Team.INSTINCT, team);
 
         //assertEquals(trainer, mockedTrainer);
 

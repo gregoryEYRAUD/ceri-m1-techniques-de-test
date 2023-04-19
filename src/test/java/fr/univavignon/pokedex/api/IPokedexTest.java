@@ -100,27 +100,6 @@ public class IPokedexTest {
 
     @Test
     public void testGetPokemons(){
-        /*Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
-        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
-
-        IPokedex mockedPokedex = Mockito.mock(IPokedex.class);
-
-        Mockito.when(mockedPokedex.addPokemon(bulbizarre)).thenReturn(0);
-        Mockito.when(mockedPokedex.addPokemon(aquali)).thenReturn(133);
-
-        mockedPokedex.addPokemon(bulbizarre);
-        mockedPokedex.addPokemon(aquali);
-
-        List<Pokemon> list = new ArrayList<>();
-        list.add(aquali);
-        list.add(bulbizarre);
-
-        Mockito.when(mockedPokedex.getPokemons()).thenReturn(list);
-
-        List<Pokemon> pokedex = mockedPokedex.getPokemons();
-
-        assertEquals(pokedex, list);*/
-
         Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
 
@@ -133,9 +112,6 @@ public class IPokedexTest {
         list.add(bulbizarre);
         list.add(aquali);
 
-
-        //Mockito.when(pokedex.getPokemons()).thenReturn(list);
-
         List<Pokemon> pokedexList = pokedex.getPokemons();
 
         assertEquals(pokedexList, list);
@@ -143,31 +119,6 @@ public class IPokedexTest {
 
     @Test
     public void testGetPokemonsSorted(){
-        /*Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
-        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
-
-        IPokedex mockedPokedex = Mockito.mock(IPokedex.class);
-
-        Mockito.when(mockedPokedex.addPokemon(bulbizarre)).thenReturn(0);
-        Mockito.when(mockedPokedex.addPokemon(aquali)).thenReturn(133);
-
-        mockedPokedex.addPokemon(bulbizarre);
-        mockedPokedex.addPokemon(aquali);
-
-        List<Pokemon> list = new ArrayList<>();
-        list.add(aquali);
-        list.add(bulbizarre);
-
-        PokemonComparators order = PokemonComparators.NAME;
-
-        list.sort(order);
-
-        Mockito.when(mockedPokedex.getPokemons(PokemonComparators.NAME)).thenReturn(list);
-
-        List<Pokemon> pokedex = mockedPokedex.getPokemons(PokemonComparators.NAME);
-
-        assertEquals(pokedex, list);*/
-
         Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
 
@@ -191,19 +142,57 @@ public class IPokedexTest {
     @Test
     public void testCreatePokemon(){
         Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
-        //Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
 
         Pokedex pokedex = new Pokedex(new PokemonMetadataProvider(), new PokemonFactory());
         pokedex.addPokemon(bulbizarre);
 
-        Pokemon pokemon = pokedex.createPokemon(0, 613, 64, 4000, 4);
+        Pokemon pokemon = null;
+        try {
+            pokemon = pokedex.createPokemon(0, 613, 64, 4000, 4);
+        } catch (PokedexException e) {
+            throw new RuntimeException(e);
+        }
 
         assertNotNull(pokemon);
+    }
 
+    @Test
+    public void testCreatePokemonException(){
+        Pokedex pokedex = new Pokedex(new PokemonMetadataProvider(), new PokemonFactory());
+        try {
+            pokedex.createPokemon(0, 613, 64, 4000, 4);
+            fail("L'exception ne s'est pas lancée");
+        } catch (PokedexException e) {
+            //throw new RuntimeException(e);
+        }
     }
 
     @Test
     public void testGetPokemonMetadata(){
+        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
 
+        Pokedex pokedex = new Pokedex(new PokemonMetadataProvider(), new PokemonFactory());
+        pokedex.addPokemon(bulbizarre);
+        PokemonMetadata metadata;
+        try {
+            metadata = pokedex.getPokemonMetadata(0);
+        } catch (PokedexException e) {
+            throw new RuntimeException(e);
+        }
+
+        assertNotNull(metadata);
+    }
+
+    @Test
+    public void testGetPokemonMetadataException(){
+        Pokedex pokedex = new Pokedex(new PokemonMetadataProvider(), new PokemonFactory());
+
+        PokemonMetadata metadata;
+        try {
+            metadata = pokedex.getPokemonMetadata(0);
+            fail("L'exception ne s'est pas lancée");
+        } catch (PokedexException e) {
+            //throw new RuntimeException(e);
+        }
     }
 }

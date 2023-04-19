@@ -5,13 +5,9 @@ public class PokemonFactory implements IPokemonFactory{
     private Pokedex pokedex;
 
     @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
+    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
         PokemonMetadata metadata;
-        try {
-            metadata = pokedex.getPokemonMetadata(index);
-        } catch (PokedexException e) {
-            throw new RuntimeException(e);
-        }
+        metadata = pokedex.getPokemonMetadata(index);
         return new Pokemon(index, metadata.getName(), metadata.getAttack(), metadata.getDefense(), metadata.getStamina(), cp, hp, dust, candy, 56);
     }
 

@@ -19,6 +19,9 @@ public class Pokedex implements IPokedex {
         pokemons = new ArrayList<>();
         this.metadataProvider = (PokemonMetadataProvider) metadataProvider;
         this.pokemonFactory = (PokemonFactory) pokemonFactory;
+
+        this.pokemonFactory.setPokedex(this);
+        this.metadataProvider.setPokedex(this);
     }
 
     @Override
@@ -59,7 +62,7 @@ public class Pokedex implements IPokedex {
     }
 
     @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
+    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
         return pokemonFactory.createPokemon(index, cp, hp, dust, candy);
     }
 

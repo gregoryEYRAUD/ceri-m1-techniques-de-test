@@ -18,16 +18,21 @@ public class IPokemonTrainerFactoryTest {
 
     @Test
     public void testCreateTrainer(){
-        Team mockedTeam = Mockito.mock(Team.class);
+        //Team mockedTeam = Mockito.mock(Team.class);
+        Team team = Team.INSTINCT;
         IPokedexFactory mockedFactory = Mockito.mock(IPokedexFactory.class);
-        String name = "";
+        String name = "Red";
         IPokemonTrainerFactory mockedTrainerFactory = Mockito.mock(IPokemonTrainerFactory.class);
 
         PokemonTrainer mockedTrainer = Mockito.mock(PokemonTrainer.class);
 
 
-        Mockito.when(mockedTrainerFactory.createTrainer(name, mockedTeam, mockedFactory)).thenReturn(mockedTrainer);
-        PokemonTrainer trainer = mockedTrainerFactory.createTrainer(name, mockedTeam, mockedFactory);
+        Mockito.when(mockedTrainerFactory.createTrainer(name, team, mockedFactory)).thenReturn(mockedTrainer);
+        PokemonTrainer trainer = mockedTrainerFactory.createTrainer(name, team, mockedFactory);
+
+        assertEquals("Red", trainer.getName());
+        assertEquals(Team.INSTINCT, trainer.getTeam());
+
 
         assertEquals(trainer, mockedTrainer);
 

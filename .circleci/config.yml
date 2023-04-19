@@ -49,7 +49,10 @@ jobs:
                 mkdir -p /tmp/reports/checkstyle
                 cp -R target/site/* /tmp/reports/checkstyle
 
-          - run: mvn javadoc:javadoc
+          - run:
+              name : Generate Javadoc 
+              command : mvn javadoc:javadoc
+
           - store_artifacts:
               path: target/site/apidocs/
               destination: javadoc

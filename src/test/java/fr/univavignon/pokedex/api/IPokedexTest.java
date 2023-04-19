@@ -26,6 +26,13 @@ public class IPokedexTest {
         int taille = pokedex.size();
 
         assertEquals(taille, 0);
+
+        try {
+            Mockito.when(pokedex.getPokemon(-1)).thenThrow(new PokedexException("ID incorrect"));
+        } catch (PokedexException e) {
+            assertEquals(e.getMessage(), "ID incorrect");
+            throw new RuntimeException(e);
+        }
     }
 
 

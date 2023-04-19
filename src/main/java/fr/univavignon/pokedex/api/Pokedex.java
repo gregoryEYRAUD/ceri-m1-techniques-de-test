@@ -70,12 +70,12 @@ public class Pokedex implements IPokedex {
      *
      * @param id Unique pokedex relative identifier.
      * @return Pokemon denoted by the given identifier.
-     * @throws PokedexException If the given <strong>index</strong> is not valid.
+     * @throws PokedexException If index is not valid.
      */
     @Override
     public Pokemon getPokemon(final int id) throws PokedexException {
         for (Pokemon pokemon : pokemons) {
-            if(pokemon.getIndex() == id) {
+            if(pokemon.getIndex() == id){
                 return pokemon;
             }
         }
@@ -133,10 +133,10 @@ public class Pokedex implements IPokedex {
     }
 
     /**
-     * Return the pokemon's metadata
+     * Return the pokemon's metadata.
      * @param index Index of the pokemon.
-     * @return the PokemonMetadata for a Pokemon for the given <strong>id</strong>
-     * @throws PokedexException If the given <strong>index</strong> is not valid.
+     * @return the PokemonMetadata for this Pokemon
+     * @throws PokedexException If index is not valid.
      */
     @Override
     public PokemonMetadata getPokemonMetadata(

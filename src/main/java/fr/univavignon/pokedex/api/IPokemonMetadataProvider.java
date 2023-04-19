@@ -8,11 +8,11 @@ package fr.univavignon.pokedex.api;
 public interface IPokemonMetadataProvider {
 
     /**
-	 * Retrieves and returns the metadata for the pokemon
-	 * denoted by the given <strong>index</strong>.
-	 * @param index Index of the pokemon to retrieve metadata for.
-	 * @return Metadata of the pokemon.
-	 * @throws PokedexException If index is not valid.
-	 */
+     * Retrieves and returns the metadata for the pokemon
+     * denoted by the given <strong>index</strong>.
+     * @param index Index of the pokemon to retrieve metadata for.
+     * @return Metadata of the pokemon.
+     * @throws PokedexException If index is not valid.
+     */
 	PokemonMetadata getPokemonMetadata(int index) throws PokedexException;
 }

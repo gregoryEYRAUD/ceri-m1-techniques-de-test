@@ -7,15 +7,15 @@ package fr.univavignon.pokedex.api;
 public interface IPokemonFactory {
 
     /**
-	 * Creates a pokemon instance computing it IVs.
-	 * @param index Pokemon index.
-	 * @param cp Pokemon CP.
-	 * @param hp Pokemon HP.
-	 * @param dust Required dust.
-	 * @param candy Required candy.
-	 * @throws PokedexException If index is not valid.
-	 * @return Created pokemon instance.
-	 */
+     * Creates a pokemon instance computing it IVs.
+     * @param index Pokemon index.
+     * @param cp Pokemon CP.
+     * @param hp Pokemon HP.
+     * @param dust Required dust.
+     * @param candy Required candy.
+     * @throws PokedexException If index is not valid.
+     * @return Created pokemon instance.
+     */
 	Pokemon createPokemon(int index,
 						  int cp,
 						  int hp,

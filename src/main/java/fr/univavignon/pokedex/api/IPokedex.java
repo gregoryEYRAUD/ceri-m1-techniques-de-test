@@ -11,36 +11,31 @@ import java.util.List;
 public interface IPokedex extends IPokemonMetadataProvider, IPokemonFactory {
     /**
 	 * Returns the number of pokemon this pokedex contains.
-	 * 
 	 * @return Number of pokemon in this pokedex.
 	 */
 	int size();
 	/**
 	 * Adds the given <strong>pokemon</strong> to this pokedex and returns
 	 * it unique index.
-	 * 
 	 * @param pokemon Pokemon to add to this pokedex.
 	 * @return Index of this pokemon relative to this pokedex.
 	 */
 	int addPokemon(Pokemon pokemon);
 	/**
 	 * Locates the pokemon identified by the given <strong>id</strong>.
-	 * 
 	 * @param id Unique pokedex relative identifier.
 	 * @return Pokemon denoted by the given identifier.
-	 * @throws PokedexException If the given <strong>index</strong> is not valid.
+	 * @throws PokedexException If index is not valid.
 	 */
 	Pokemon getPokemon(int id) throws PokedexException;
 	/**
 	 * Returns an unmodifiable list of all pokemons this pokedex contains.
-	 * 
 	 * @return Unmodifiable list of all pokemons.
 	 */
 	List<Pokemon> getPokemons();
 	/**
 	 * Returns an unmodifiable list of all pokemons this pokedex contains.
 	 * The list view will be sorted using the given <strong>order</strong>.
-	 * 
 	 * @param order Comparator instance used for sorting the created view.
 	 * @return Sorted unmodifiable list of all pokemons.
 	 */

@@ -47,7 +47,7 @@ public class PokemonFactory implements IPokemonFactory {
     }
 
     /**
-     * setter for the pokedex
+     * setter for the pokedex.
      * @param p the updated pokedex
      */
     public void setPokedex(final Pokedex p) {

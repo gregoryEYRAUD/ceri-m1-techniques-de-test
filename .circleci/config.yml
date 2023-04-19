@@ -2,6 +2,9 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+codecov: 
+  token: afe7a8ec-66d6-4a04-b854-1134001e77dd
+
 orbs:
   codecov: codecov/codecov@3.0.0
 

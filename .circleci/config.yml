@@ -42,6 +42,10 @@ jobs:
           - codecov/upload
 
           - run:
+              name : Generate Javadoc 
+              command : mvn javadoc:javadoc
+
+          - run:
               name: Generate Checkstyle Report
               command: |
                 mvn checkstyle:checkstyle-aggregate
@@ -50,8 +54,14 @@ jobs:
                 cp -R target/site/* /tmp/reports/checkstyle
 
           - run:
-              name : Generate Javadoc 
-              command : mvn javadoc:javadoc
+              name: Generate Checkstyle badge
+              command: |
+                wget -O checkstyle.xml https://circleci.com/api/v1.1/project/github/yourusername/yourproject/latest/artifacts/0/$CIRCLE_ARTIFACTS/checkstyle-result.xml
+                curl -s https://img.shields.io/badge/checkstyle-$(grep -E '<error|<warning' checkstyle.xml | wc -l)-yellow.svg > badge.svg
+                rm checkstyle.xml
+              no_output_timeout: 20s
+          - store_artifacts:
+              path: badge.svg
 
           - store_artifacts:
               path: target/site/apidocs/

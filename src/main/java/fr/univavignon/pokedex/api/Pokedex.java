@@ -16,7 +16,7 @@ public class Pokedex implements IPokedex {
     private PokemonFactory pokemonFactory;
 
     public Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
-        pokemons = new ArrayList<>(150);
+        pokemons = new ArrayList<>();
         this.metadataProvider = (PokemonMetadataProvider) metadataProvider;
         this.pokemonFactory = (PokemonFactory) pokemonFactory;
     }
@@ -29,18 +29,21 @@ public class Pokedex implements IPokedex {
     @Override
     public int addPokemon(Pokemon pokemon) {
         //pokemons.set(pokemon.getIndex(), pokemon);
+        //pokemons.set(pokemon.getIndex(), pokemon);
         pokemons.add(pokemon);
+        metadataProvider.setPokedex(this);
+        pokemonFactory.setPokedex(this);
         return pokemon.getIndex();
     }
 
     @Override
     public Pokemon getPokemon(int id) throws PokedexException {
-        try{
-            return pokemons.get(id);
-        } catch (Exception e) {
-            throw new PokedexException(e.getMessage());
+        for (Pokemon pokemon : pokemons){
+            if(pokemon.getIndex() == id)
+                return pokemon;
         }
-
+        throw new PokedexException("Id invalide");
+        //return null;
     }
 
     @Override
@@ -57,18 +60,11 @@ public class Pokedex implements IPokedex {
 
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
-        PokemonMetadata metadata;
-        try {
-             metadata = getPokemonMetadata(index);
-             } catch (PokedexException e) {
-                throw new RuntimeException(e);
-        }
-        return new Pokemon(index, metadata.getName(), metadata.getAttack(), metadata.getDefense(), metadata.getStamina(), cp, hp, dust, candy, 53);
+        return pokemonFactory.createPokemon(index, cp, hp, dust, candy);
     }
 
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-        Pokemon pokemon = pokemons.get(index);
-        return new PokemonMetadata(index, pokemon.getName(), pokemon.getAttack(), pokemon.getDefense(), pokemon.getStamina());
+        return metadataProvider.getPokemonMetadata(index);
     }
 }

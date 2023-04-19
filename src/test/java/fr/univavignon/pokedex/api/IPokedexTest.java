@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.*;
 
 public class IPokedexTest {
     /*
@@ -70,24 +69,6 @@ public class IPokedexTest {
     }
     @Test
     public void testGetPokemon(){
-        /*Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
-        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
-
-        IPokedex mockedPokedex = Mockito.mock(IPokedex.class);
-
-        try {
-            Mockito.when(mockedPokedex.getPokemon(0)).thenReturn(bulbizarre);
-            Mockito.when(mockedPokedex.getPokemon(133)).thenReturn(aquali);
-
-            Pokemon poke1 = mockedPokedex.getPokemon(0);
-            Pokemon poke2 = mockedPokedex.getPokemon(133);
-
-            assertEquals(poke1, bulbizarre);
-            assertEquals(poke2, aquali);
-
-        } catch (PokedexException e) {
-            throw new RuntimeException(e);
-        }*/
         Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
 
@@ -97,12 +78,23 @@ public class IPokedexTest {
 
         try {
             Pokemon poke1 = pokedex.getPokemon(0);
-            Pokemon poke2 = pokedex.getPokemon(1);
+            Pokemon poke2 = pokedex.getPokemon(133);
 
             assertEquals(poke1, bulbizarre);
             assertEquals(poke2, aquali);
         } catch (PokedexException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void testGetPokemonException(){
+        Pokedex pokedex = new Pokedex(new PokemonMetadataProvider(), new PokemonFactory());
+        try {
+            pokedex.getPokemon(0);
+            fail("L'exception n'as pas été lancée");
+        } catch (PokedexException e) {
+            //L'exception à bien été lancée
         }
     }
 
@@ -195,5 +187,23 @@ public class IPokedexTest {
         List<Pokemon> pokemonList = pokedex.getPokemons(PokemonComparators.NAME);
 
         assertEquals(list, pokemonList);
+    }
+    @Test
+    public void testCreatePokemon(){
+        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        //Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4 , 100);
+
+        Pokedex pokedex = new Pokedex(new PokemonMetadataProvider(), new PokemonFactory());
+        pokedex.addPokemon(bulbizarre);
+
+        Pokemon pokemon = pokedex.createPokemon(0, 613, 64, 4000, 4);
+
+        assertNotNull(pokemon);
+
+    }
+
+    @Test
+    public void testGetPokemonMetadata(){
+
     }
 }

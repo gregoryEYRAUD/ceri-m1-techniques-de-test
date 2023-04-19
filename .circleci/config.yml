@@ -45,7 +45,7 @@ jobs:
               name: Generate Checkstyle Report
               command: |
                 mvn checkstyle:checkstyle-aggregate
-                mvn checkstyle:checkstyle-report
+                mvn checkstyle:checkstyle
                 mkdir -p /tmp/reports/checkstyle
                 cp -R target/site/* /tmp/reports/checkstyle
           

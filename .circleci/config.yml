@@ -59,7 +59,7 @@ jobs:
               destination: javadoc
               
           - store_artifacts:
-              path: /target/site/*
+              path: /tmp/reports/checkstyle
               destination: artifact-file
               
           - store_artifacts:

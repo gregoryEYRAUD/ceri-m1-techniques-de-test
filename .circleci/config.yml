@@ -68,6 +68,9 @@ jobs:
           - run:
               name: Generate Checkstyle badge
               command: |
+                sudo apt-get update
+                sudo apt-get install -y nodejs
+                sudo apt-get install -y npm
                 npm install -g checkstyle-reporter
                 heckstyle-reporter \
                 -i artifact-file/main.xml \

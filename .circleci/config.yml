@@ -70,8 +70,8 @@ jobs:
               command: |
                 npm install -g checkstyle-reporter
                 heckstyle-reporter \
-                -i checkstyle-results/main.xml \
-                -o checkstyle-results/badge.svg \
+                -i artifact-file/main.xml \
+                -o artifact-file/badge.svg \
                 --min-quality=0 \
                 --max-quality=100 \
                 --severity-error=0 \

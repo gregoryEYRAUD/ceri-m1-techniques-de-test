@@ -58,8 +58,26 @@ jobs:
               destination: javadoc
               
           - store_artifacts:
+              path: /tmp/reports/checkstyle
+              destination: artifact-file
+              
+          - store_artifacts:
               path: target/site/badges/ 
               destination : badge
+
+          - run:
+              name: Generate Checkstyle badge
+              command: |
+                checkstyle-reporter \
+                -i checkstyle-results/main.xml \
+                -o checkstyle-results/badge.svg \
+                --min-quality=0 \
+                --max-quality=100 \
+                --severity-error=0 \
+                --severity-warning=1 \
+                --severity-info=100 \
+                --style=flat
+              when: always
 
           - store_artifacts:
               path: /tmp/reports/checkstyle

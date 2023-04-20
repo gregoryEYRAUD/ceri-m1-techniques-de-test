@@ -64,29 +64,6 @@ jobs:
           - store_artifacts:
               path: target/site/badges/ 
               destination : badge
-
-          - run:
-              name: Generate Checkstyle badge
-              command: |
-                sudo apt-get update
-                sudo apt-get install -y nodejs
-                sudo apt-get install -y npm
-                npm install -g checkstyle-reporter
-                heckstyle-reporter \
-                -i artifact-file/main.xml \
-                -o artifact-file/badge.svg \
-                --min-quality=0 \
-                --max-quality=100 \
-                --severity-error=0 \
-                --severity-warning=1 \
-                --severity-info=100 \
-                --style=flat
-              when: always
-
-          - store_artifacts:
-              path: /tmp/reports/checkstyle
-              destination: artifact-file
-          
           
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

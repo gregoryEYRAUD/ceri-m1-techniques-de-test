@@ -67,7 +67,6 @@ http://maven.apache.org/maven-v4_0_0.xsd"
             <version>1.0.0</version>
             <executions>
                 <execution>
-                    <phase>site</phase>
                     <goals>
                         <goal>badges</goal>
                     </goals>

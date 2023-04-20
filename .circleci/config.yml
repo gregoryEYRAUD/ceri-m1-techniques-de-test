@@ -65,14 +65,6 @@ jobs:
           - store_artifacts:
               path: /tmp/reports/checkstyle
               destination: artifact-file
-          - run:
-              name: Generate Checkstyle badge
-              command: |
-                badger --subject Checkstyle \
-                --status $(./gradlew checkstyleMain --quiet | grep "^FAILURE" >/dev/null && echo "failed" || echo "passed") \
-                --color $(./gradlew checkstyleMain --quiet | grep "^FAILURE" >/dev/null && echo "red" || echo "green") \
-                --style flat-square \
-                --output checkstyle-badge.svg
           
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

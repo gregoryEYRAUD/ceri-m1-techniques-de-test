@@ -61,13 +61,29 @@ http://maven.apache.org/maven-v4_0_0.xsd"
                     <show>public</show>
                 </configuration>
         </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>3.1.2</version>
+            <executions>
+                <execution>
+                    <id>checkstyle</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
         <plugin>
             <groupId>com.github.bordertech.buildtools</groupId>
             <artifactId>badger</artifactId>
             <version>1.0.0</version>
             <executions>
                 <execution>
-                    <phase>package</phase>
+                    <phase>site</phase>
                     <goals>
                         <goal>badges</goal>
                     </goals>

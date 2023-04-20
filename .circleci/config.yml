@@ -68,7 +68,8 @@ jobs:
           - run:
               name: Generate Checkstyle badge
               command: |
-                checkstyle-reporter \
+                npm install -g checkstyle-reporter
+                heckstyle-reporter \
                 -i checkstyle-results/main.xml \
                 -o checkstyle-results/badge.svg \
                 --min-quality=0 \

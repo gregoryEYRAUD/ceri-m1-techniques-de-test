@@ -67,13 +67,14 @@ http://maven.apache.org/maven-v4_0_0.xsd"
             <version>1.0.0</version>
             <executions>
                 <execution>
+                    <phase>package</phase>
                     <goals>
                         <goal>badges</goal>
                     </goals>
                     <configuration>
                         <outputDir>target/site/badges</outputDir>
                         <inputFiles>
-                            <inputFile>target/site/checkstyle.xml</inputFile>
+                            <inputFile>target/site/checkstyle.html</inputFile>
                         </inputFiles>
                     </configuration>
                 </execution>

@@ -65,10 +65,14 @@ jobs:
           - store_artifacts:
               path: /tmp/reports/checkstyle
               destination: artifact-file
-              
-          - store_artifacts:
-              path: /tmp/reports/checkstyle 
-              destination : badge
+          - run:
+              name: Generate Checkstyle badge
+              command: |
+                badger --subject Checkstyle \
+                --status $(./gradlew checkstyleMain --quiet | grep "^FAILURE" >/dev/null && echo "failed" || echo "passed") \
+                --color $(./gradlew checkstyleMain --quiet | grep "^FAILURE" >/dev/null && echo "red" || echo "green") \
+                --style flat-square \
+                --output checkstyle-badge.svg
           
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -77,4 +81,5 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
+      
       

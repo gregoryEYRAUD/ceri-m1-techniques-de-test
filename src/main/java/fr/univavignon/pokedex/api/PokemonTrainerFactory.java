@@ -12,8 +12,8 @@ public class PokemonTrainerFactory implements IPokemonTrainerFactory {
 
     /**
      * PokemonTrainerFactory's default constructor.
-     * @param name Name of the created trainer.
-     * @param team Team of the created trainer.
+     * @param name trainer's name.
+     * @param team trainer's team.
      * @param pokedexFactory Factory used to create pokedex instance.
      * @return a new PokemonTrainer
      */

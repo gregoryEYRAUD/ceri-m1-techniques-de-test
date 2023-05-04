@@ -1,4 +1,5 @@
 package fr.univavignon.pokedex.api;
+import java.lang.Math;
 
 /**
  * PokemonFactory class implementing IPokemonFactory.
@@ -34,6 +35,7 @@ public class PokemonFactory implements IPokemonFactory {
                                  final int candy) throws PokedexException {
         PokemonMetadata metadata;
         metadata = pokedex.getPokemonMetadata(index);
+
         return new Pokemon(index,
                 metadata.getName(),
                 metadata.getAttack(),
@@ -43,7 +45,7 @@ public class PokemonFactory implements IPokemonFactory {
                 hp,
                 dust,
                 candy,
-                56);
+                Math.random()*100);
     }
 
     /**

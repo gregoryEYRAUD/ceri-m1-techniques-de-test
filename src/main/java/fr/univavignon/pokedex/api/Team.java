@@ -5,19 +5,19 @@ package fr.univavignon.pokedex.api;
  * @author fv
  */
 public enum Team {
-	/**
-	 * MYSTIC team.
-	 */
-	MYSTIC,
+    /**
+     * MYSTIC team.
+     */
+    MYSTIC,
 
-	/**
-	 * INSTINCT team.
-	 */
-	INSTINCT,
+    /**
+     * INSTINCT team.
+     */
+    INSTINCT,
 
-	/**
-	 * VALOR team.
-	 */
-	VALOR
+    /**
+     * VALOR team.
+     */
+    VALOR
 
 }

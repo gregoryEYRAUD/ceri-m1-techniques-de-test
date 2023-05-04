@@ -75,7 +75,7 @@ public class Pokedex implements IPokedex {
     @Override
     public Pokemon getPokemon(final int id) throws PokedexException {
         for (Pokemon pokemon : pokemons) {
-            if(pokemon.getIndex() == id){
+            if(pokemon.getIndex() == id) {
                 return pokemon;
             }
         }

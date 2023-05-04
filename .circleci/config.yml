@@ -52,6 +52,16 @@ jobs:
               name : Generate Javadoc 
               command : mvn javadoc:javadoc
 
+          - run:
+              name: Install and configure dependencies
+              command: |
+                npm install -g --silent gh-pages@2.0.1
+                git config user.email "gregory.eyraud@alumni.univ-avignon.fr"
+                git config user.name "gregoryEYRAUD"
+          - run:
+              name: Deploy docs to gh-pages branch
+              command: gh-pages --dist target/site/apidocs/
+
           - store_artifacts:
               name: Store Javadoc
               path: target/site/apidocs/

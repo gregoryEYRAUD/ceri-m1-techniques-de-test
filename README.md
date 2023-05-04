@@ -8,6 +8,7 @@ Badge CLI: [![CircleCI](https://dl.circleci.com/status-badge/img/gh/gregoryEYRAU
 
 Badge Codecov : [![codecov](https://codecov.io/gh/gregoryEYRAUD/ceri-m1-techniques-de-test/branch/master/graph/badge.svg?token=JY9DXWVYVS)](https://codecov.io/gh/gregoryEYRAUD/ceri-m1-techniques-de-test)
 
+Badge Checkstyle : ![Checkstyle](target/site/badges/checkstyle-result.svg)
 # Implémentation des interfaces
 
 Pour implémenter les différentes interfaces, j'ai procédé de la manière suivante:

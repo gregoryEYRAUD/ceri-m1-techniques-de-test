@@ -54,14 +54,17 @@ jobs:
                 cp -R target/site/* /tmp/reports/checkstyle
 
           - store_artifacts:
+              name: Store Javadoc
               path: target/site/apidocs/
               destination: javadoc
 
           - store_artifacts:
-              path: /tmp/reports/checkstyle
+              name: Store badge
+              path: target/site/badges/ 
               destination : badge
               
           - store_artifacts:
+              name: Store Checkstyle
               path: /tmp/reports/checkstyle/
               destination: artifact-file
           

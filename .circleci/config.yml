@@ -52,18 +52,17 @@ jobs:
                 mvn checkstyle:checkstyle
                 mkdir -p /tmp/reports/checkstyle
                 mkdir -p /tmp/reports/checkstyle
-                cp -R target/site/* /tmp/reports/checkstyle
 
           - store_artifacts:
               path: target/site/apidocs/
               destination: javadoc
 
           - store_artifacts:
-              path: /tmp/reports/checkstyle/badges 
+              path: target/site/badges 
               destination : badge
               
           - store_artifacts:
-              path: /tmp/reports/checkstyle
+              path: target/site/*
               destination: artifact-file
           
 # Invoke jobs via workflows

@@ -48,7 +48,6 @@ jobs:
           - run:
               name: Generate Checkstyle Report
               command: |
-                mvn checkstyle:checkstyle-aggregate
                 mvn checkstyle:checkstyle
                 mkdir -p /tmp/reports/checkstyle
                 mkdir -p /tmp/reports/checkstyle
@@ -59,7 +58,7 @@ jobs:
               destination: javadoc
 
           - store_artifacts:
-              path: target/site/badges/ 
+              path: /tmp/reports/checkstyle
               destination : badge
               
           - store_artifacts:

@@ -37,6 +37,13 @@ jobs:
               command: mvn -B -DskipTests clean package
           # Then run your tests!
           - run:
+              name: Generate Checkstyle Report
+              command: |
+                mvn checkstyle:checkstyle
+                mkdir -p /tmp/reports/checkstyle
+                mkdir -p /tmp/reports/checkstyle
+
+          - run:
               name: Test
               command: mvn test
           - codecov/upload
@@ -44,14 +51,6 @@ jobs:
           - run:
               name : Generate Javadoc 
               command : mvn javadoc:javadoc
-
-          - run:
-              name: Generate Checkstyle Report
-              command: |
-                mvn checkstyle:checkstyle
-                mkdir -p /tmp/reports/checkstyle
-                mkdir -p /tmp/reports/checkstyle
-                cp -R target/site/* /tmp/reports/checkstyle
 
           - store_artifacts:
               name: Store Javadoc
@@ -65,7 +64,7 @@ jobs:
               
           - store_artifacts:
               name: Store Checkstyle
-              path: /tmp/reports/checkstyle/
+              path: target/site/*
               destination: artifact-file
           
 # Invoke jobs via workflows

@@ -37,7 +37,6 @@ http://maven.apache.org/maven-v4_0_0.xsd"
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.9</version>
             <executions>
-
                 <execution>
                     <id>prepare-agent</id>
                     <goals>
@@ -61,20 +60,22 @@ http://maven.apache.org/maven-v4_0_0.xsd"
                     <show>public</show>
                 </configuration>
         </plugin>
+        <!-- Generate badges. -->
         <plugin>
             <groupId>com.github.bordertech.buildtools</groupId>
             <artifactId>badger</artifactId>
             <version>1.0.0</version>
             <executions>
                 <execution>
-                    <phase>package</phase>
+                    <phase>test</phase>
                     <goals>
                         <goal>badges</goal>
                     </goals>
                     <configuration>
+                        <skip>${badges.skip}</skip>
                         <outputDir>target/site/badges</outputDir>
                         <inputFiles>
-                            <inputFile>target/site/checkstyle.html</inputFile>
+                            <inputFile>target/checkstyle-result.xml</inputFile>
                         </inputFiles>
                     </configuration>
                 </execution>
@@ -113,6 +114,19 @@ http://maven.apache.org/maven-v4_0_0.xsd"
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.5.0</version>
     </dependency>
+
+    <dependency>
+        <groupId>org.apache.maven.doxia</groupId>
+        <artifactId>doxia-core</artifactId>
+        <version>1.11.1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.maven.doxia</groupId>
+        <artifactId>doxia-site-renderer</artifactId>
+        <version>1.11.1</version>
+    </dependency>
+
 
 </dependencies>
     <reporting>
